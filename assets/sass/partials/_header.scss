@@ -1,0 +1,199 @@
+.header_top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: black;
+    color: white;
+    height: 2rem;
+    padding: 0 4rem;
+    font-size: 0.8rem;
+}
+
+.header_top_left {
+    .info_items {
+        @include menu_list;
+
+        .info_item {
+            margin-right: 0.8rem;
+
+            a {
+                color: white;
+            }
+        }
+    }
+}
+
+.header_top_right {
+    display: flex;
+    align-items: center;
+
+    .rrss {
+        @include menu_list;
+
+        .rrss_item {
+            margin-right: 0.8rem;
+
+            a {
+                color: white;
+            }
+        }
+    }
+
+    .newspaper_logo {
+        width: 7rem;
+        margin-right: 0.8rem;
+
+        img {
+            @include image;
+        }
+    }
+
+    .login {
+        @include menu_list;
+
+        .login_item {
+            margin-right: 0.8rem;
+
+            .fa {
+                margin-right: .2rem;
+
+            }
+        }
+    }
+}
+
+.web_logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2.5rem 0;
+
+    img {
+        @include image;
+        width: 11rem;
+
+    }
+}
+
+.header_menu {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    margin-bottom: 1rem;
+    padding: 0 4rem .5rem 4rem;
+    border-bottom: 1px solid $light_grey;
+
+    .header_toggles {
+        grid-area: 1 / 4/ span 1 / span 1;
+        justify-self: self-end;
+        align-self: center;
+        display: flex;
+
+        span {
+            margin-right: 1rem;
+        }
+
+        .searchbox {
+            position: absolute;
+            z-index: 3;
+            top: 194.433px;
+            left: 0;
+
+            background-color: rgba(0, 0, 0, 0.898);
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+            color: white;
+
+            width: 100%;
+            height: auto;
+            padding: .5rem;
+            
+            display: flex;
+            justify-content: center;
+
+            visibility: hidden;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 350ms ease;
+
+            &.opened {
+                visibility: visible;
+                opacity: 1;
+                transform: translateY(0px);
+                transition: all 350ms ease;
+
+            }
+
+            input {
+                background: transparent;
+                border: 0;
+                outline: 0;
+
+                font-size: 1.5rem;
+                color: white;
+            }
+        }
+    }
+
+}
+
+.main_menu {
+    grid-area: 1 / 2/ span 1 / span 2;
+    justify-self: center;
+    align-self: center;
+
+    .menu_items {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        @include menu_list;
+
+        .menu_item {
+            margin-right: 0.8rem;
+            text-transform: uppercase;
+
+            a {
+                color: black;
+                font-size: .9rem;
+                font-weight: 600;
+            }
+
+            .sub_menu {
+                @include menu_list;
+                display: none;
+            }
+        }
+    }
+}
+
+.aside_menu{
+    position: absolute;
+    top: 2rem;
+    left: 0;
+    z-index: 4;
+
+    width: 10rem;
+    height: 100vh;
+    padding: 2rem;
+    
+    background-color: rgba(0, 0, 0, 0.898);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    color: white;
+
+    display: none;
+
+    .aside_menu_items{
+        @include menu_list;
+        flex-direction: column;
+        .aside_menu_item{
+            margin-bottom: 1rem;
+
+            a{
+                color: white;
+            }
+
+        }
+    }
+
+    &.opened{
+        display: block;
+    }
+}
